@@ -1,0 +1,26 @@
+with open("pdfsravneniye2.txt", 'r', encoding='utf-8') as file:
+    text2 = file.read()
+int_list = []
+new_int_list = []
+text2 = text2.split('\n')
+for i in text2:
+    try:
+        i = int(i)
+        int_list.append(i)
+    except:
+        pass
+for i in int_list:
+    i = i + (i/100*15)
+    i = int(i)
+    i = '{0:,}'.format(i).replace(',', ' ')
+    new_int_list.append(i)
+for i in range(len(int_list)):
+    int_list[i] = '{0:,}'.format(int_list[i]).replace(',', ' ')
+
+print((new_int_list))
+with open('prays_ds_stoly_stulya.txt', 'a', encoding='utf-8') as file:
+    for i in new_int_list:
+        file.write(i)
+        file.write('\n')
+
+
